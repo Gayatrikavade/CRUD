@@ -1,0 +1,101 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Edit Credit Card
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="editCreditCardForm" (ngSubmit)="onSubmit()">
+            
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>ID</label>
+                    <input matInput placeholder="id" formControlName="id">
+                    <mat-error *ngIf="editCreditCardForm.get('id')?.hasError('required')">id is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Credit Card Name</label>
+                    <input matInput placeholder="Credit Card Name" formControlName="cardname">
+                    <mat-error *ngIf="editCreditCardForm.get('cardname')?.hasError('required')">Name is required</mat-error>
+                    <mat-error *ngIf="editCreditCardForm.get('cardname')?.hasError('minLength')">Name min length is 3</mat-error>
+                    <mat-error *ngIf="editCreditCardForm.get('cardname')?.hasError('maxLength')">Name max length is 20</mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Bank Name</label>
+                    <input matInput placeholder="Bank Name" formControlName="bankname">
+                    <mat-error *ngIf="editCreditCardForm.get('bankname')?.hasError('required')">bankname is required</mat-error>
+                    <mat-error *ngIf="editCreditCardForm.get('bankname')?.hasError('minLength')">bankname min length is 3</mat-error>
+                    <mat-error *ngIf="editCreditCardForm.get('bankname')?.hasError('maxLength')">bankname max length is 20</mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Description</label>
+                    <input matInput placeholder="description" formControlName="description">
+                    <mat-error *ngIf="editCreditCardForm.get('description')?.hasError('required')">Description is required</mat-error>
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Max Credit</label>
+                    <input matInput placeholder="max Credit" formControlName="maxCredit">
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Interest Rate</label>
+                    <input matInput placeholder="Interest Rate" formControlName="interestrate">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Interest offer</label>
+                    <input matInput placeholder="Interest Offer" formControlName="interestoffer">
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-checkbox formControlName="active" >Active</mat-checkbox>
+            </div>
+
+
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Reccomended Credit Score</label>
+                    <mat-select aria-placeholder="Reccomended Score" formControlName="reccomendedCreditScore">
+                        <mat-option value="100-500">100-500</mat-option>
+                        <mat-option value="500-700">500-700</mat-option>
+                        <mat-option value="100-900">100-900</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Annual Fee</label>
+                    <input matInput placeholder="Annual Fee" formControlName="annualfee">
+                </mat-form-field>
+            </div>
+
+
+            <div class="form-group">
+                <mat-form-field class="half-width">
+                    <label>Number of Application</label>
+                    <input matInput placeholder="Number of Application" formControlName="numberofapplication">
+                </mat-form-field>
+            </div>
+
+            <button mat-raised-button type="submit" color="primary" [disabled]="!editCreditCardForm.valid">Edit credit Card</button>
+        </form>
+    </mat-card-content>
+    
+</mat-card>

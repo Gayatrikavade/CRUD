@@ -1,0 +1,120 @@
+<div class="mat-card" style="display: flex;flex-direction: row;">
+    <mat-card class="mat-card count-card bg-success" >
+        <mat-card-title>Number of Cards with Maximum Amount </mat-card-title>
+        <mat-card-content>{{creditCardMaxAmount}}</mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card count-card bg-warning" >
+        <mat-card-title>Credit Card Max Interest</mat-card-title>
+        <mat-card-content>{{creditCardMaxInterest}}</mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card count-card bg-info">
+        <mat-card-title>Credit Card Max AnnualFee</mat-card-title>
+        <mat-card-content>{{creditCardMaxAnnualFee}}</mat-card-content>
+    </mat-card>
+    <mat-card class="mat-card count-card bg-primary">
+        <mat-card-title>No of Cards</mat-card-title>
+        <mat-card-content>10</mat-card-content>
+    </mat-card>
+</div>
+
+<mat-card class="mat-card">
+    <mat-card-header>
+        <mat-card-title>Listing all credit cards</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox></mat-checkbox>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>ID</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.id}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="cardname">
+                <th mat-header-cell *matHeaderCellDef>Card Name</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.cardname}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="bankname">
+                <th mat-header-cell *matHeaderCellDef>Bank Name</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.bankname}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.description}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="maxCredit">
+                <th mat-header-cell *matHeaderCellDef>Max Credit</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.maxCredit}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="active">
+                <th mat-header-cell *matHeaderCellDef>Active</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.active}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="annualfee">
+                <th mat-header-cell *matHeaderCellDef>Annual fee</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.annualfee}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="interestrate">
+                <th mat-header-cell *matHeaderCellDef>Interest Rate</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.interestrate}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="interestoffer">
+                <th mat-header-cell *matHeaderCellDef>Interest Offer</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.interestoffer}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="reccomendedCreditScore">
+                <th mat-header-cell *matHeaderCellDef>Reccomended Credit Score</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.reccomendedCreditScore}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="numberofapplication">
+                <th mat-header-cell *matHeaderCellDef>Number of Application</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.numberofapplication}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <a [routerLink]="['view',element.id]">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+                    </a>|
+                    <a [routerLink]="['edit',element.id]">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
+                    </a>|
+                    <a [routerLink]="['delete',element.id]">
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+                    </a>|
+                </td>
+            </ng-container>
+           
+            <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+            <tr mat-row *matRowDef="let row;columns:displayColumns"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons>
+        </mat-paginator>
+    </mat-card-content>
+</mat-card>
